@@ -13,7 +13,7 @@ services:
 
   authservice:
     container_name: authservice-${teamname:-defaultASW}
-    image: ghcr.io/arquisoft/wiq_es6a/authservice:latest
+    image: ghcr.io/uo17919/wiq_uo17919/authservice:latest
     profiles: ["dev", "prod"]
     build: ./users/authservice
     depends_on:
@@ -27,7 +27,7 @@ services:
 
   userservice:
     container_name: userservice-${teamname:-defaultASW}
-    image: ghcr.io/arquisoft/wiq_es6a/userservice:latest
+    image: ghcr.io/uo17919/wiq_uo17919/userservice:latest
     profiles: ["dev", "prod"]
     build: ./users/userservice
     depends_on:
@@ -41,7 +41,7 @@ services:
 
   gatewayservice:
     container_name: gatewayservice-${teamname:-defaultASW}
-    image: ghcr.io/arquisoft/wiq_es6a/gatewayservice:latest
+    image: ghcr.io/uo17919/wiq_uo17919/gatewayservice:latest
     profiles: ["dev", "prod"]
     build: ./gatewayservice
     depends_on:
@@ -58,7 +58,7 @@ services:
 
   webapp:
     container_name: webapp-${teamname:-defaultASW}
-    image: ghcr.io/arquisoft/wiq_es6a/webapp:latest
+    image: ghcr.io/uo17919/wiq_uo17919/webapp:latest
     profiles: ["dev", "prod"]
     build: ./webapp
     depends_on:

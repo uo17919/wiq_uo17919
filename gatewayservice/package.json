@@ -9,14 +9,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/arquisoft/wiq_es6a.git"
+        "url": "git+https://github.com/uo17919/wiq_uo17919.git"
     },
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/arquisoft/wiq_es6a/issues"
+        "url": "https://github.com/uo17919/wiq_uo17919/issues"
     },
-    "homepage": "https://github.com/arquisoft/wiq_es6a#readme",
+    "homepage": "https://github.com/uo17919/wiq_uo17919#readme",
     "dependencies": {
         "axios": "^1.6.5",
         "cors": "^2.8.5",
