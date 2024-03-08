@@ -1,9 +1,9 @@
-// src/components/GetAnswer.js
+// src/components/GetQuestion.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, Typography, TextField, Button, Snackbar } from '@mui/material';
 
-const GetAnswer = () => {
+const GetQuestion = () => {
 //  const [type, setType] = useState('');
 //  const [value, setValue] = useState('');
   const [error, setError] = useState('');
@@ -12,12 +12,13 @@ const GetAnswer = () => {
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const apiEndpoint = process.env.REACT_APP_API_ENDPOINT || 'http://localhost:8000';
-  const getAnswer = async () => {
+  
+  const getQuestion = async () => {
       const type = 'capital';
-      const attribute = 'Russia';
-      console.log('getAnswer');
+      const attribute = 'Brazil';
+      console.log('GetQuestion');
       try {  
-        const response = await axios.post(`${apiEndpoint}/getanswer`, { type, attribute } );
+        const response = await axios.post(`${apiEndpoint}/getquestion`, { type, attribute } );
         console.log('La ' + response.data.type + ' de ' + response.data.attribute + ' es ' + response.data.right);
         console.log('y ' + response.data.wrong1 + ', ' + response.data.wrong2 + ' y ' + response.data.wrong3 + ' no lo son ;-)');
         setOpenSnackbar(true);
@@ -32,11 +33,11 @@ const GetAnswer = () => {
 
   return (   
     <div>         
-      <Button variant="contained" color="primary" onClick={getAnswer}>
-        GetAnswer
+      <Button variant="contained" color="primary" onClick={getQuestion}>
+        GetQuestion
       </Button>
     </div> 
   );
 };
 
-export default GetAnswer;
+export default GetQuestion;

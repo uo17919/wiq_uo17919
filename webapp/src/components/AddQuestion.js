@@ -1,9 +1,9 @@
-// src/components/Login.js
+// src/components/AddQuestion.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Container, Typography, TextField, Button, Snackbar } from '@mui/material';
 
-const AddAnswer = () => {
+const AddQuestion = () => {
 //  const [type, setType] = useState('');
 //  const [value, setValue] = useState('');
   const [error, setError] = useState('');
@@ -29,7 +29,7 @@ const AddAnswer = () => {
   }
   ORDER BY ?countryLabel`;
 
-  const generateAnswer = async () => {
+  const generateQuestion = async () => {
     const fullUrl = endpointUrl + '?query=' + encodeURIComponent( sparqlQuery );
     const headers = { 'Accept': 'application/sparql-results+json' };
     const response = await fetch( fullUrl, { headers } );
@@ -39,7 +39,7 @@ const AddAnswer = () => {
     console.log(jsonResponse.results.bindings[index].capitalLabel.value + 
                 ' es la capital de ' + 
                 jsonResponse.results.bindings[index].countryLabel.value );
-    const answer = {
+    const question = {
       type: 'capital',
       attribute: jsonResponse.results.bindings[index].countryLabel.value,
       right: jsonResponse.results.bindings[index].capitalLabel.value,
@@ -47,22 +47,22 @@ const AddAnswer = () => {
       wrong2: jsonResponse.results.bindings[index+2].capitalLabel.value,
       wrong3: jsonResponse.results.bindings[index+3].capitalLabel.value,
     };
-    return answer;
+    return question;
   };
 
-  const addAnswer = async () => {
+  const addQuestion = async () => {
       
-      const answer = await generateAnswer();
-      const type = answer.type;
-      const attribute = answer.attribute;
-      const right = answer.right;
-      const wrong1 = answer.wrong1;
-      const wrong2 = answer.wrong2;
-      const wrong3 = answer.wrong3;
+      const question = await generateQuestion();
+      const type = question.type;
+      const attribute = question.attribute;
+      const right = question.right;
+      const wrong1 = question.wrong1;
+      const wrong2 = question.wrong2;
+      const wrong3 = question.wrong3;
 
-      console.log('AddAnswer');
+      console.log('AddQuestion');
       try {
-        await axios.post(`${apiEndpoint}/addanswer`, { type, attribute, right, wrong1, wrong2, wrong3 });
+        await axios.post(`${apiEndpoint}/addquestion`, { type, attribute, right, wrong1, wrong2, wrong3 });
         setOpenSnackbar(true);
       } catch (error) {
         setError(error.response.data.error);
@@ -75,11 +75,11 @@ const AddAnswer = () => {
 
   return (   
     <div>         
-      <Button variant="contained" color="primary" onClick={addAnswer}>
-        addAnswer
+      <Button variant="contained" color="primary" onClick={addQuestion}>
+        addQuestion
       </Button>
     </div> 
   );
 };
 
-export default AddAnswer;
+export default AddQuestion;
