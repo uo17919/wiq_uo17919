@@ -26,12 +26,14 @@ function validateRequiredFields(req, requiredFields) {
 app.post('/getquestion', async (req, res) => {
   try {
     // Check if required fields are present in the request body
-    validateRequiredFields(req, ['type', 'attribute']);
+    validateRequiredFields(req, ['type']);
 
     const { type, attribute } = req.body;
     
     // Find the question in the database
-    const question = await Question.findOne({ attribute });
+    // const question = await Question.findOne({ attribute });
+    var random = Math.floor(Math.random() * 20)
+    const question = await Question.findOne().skip(random);
 
     // Check if the question exists
     if (question) {
